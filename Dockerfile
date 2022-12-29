@@ -1,5 +1,5 @@
-FROM debian:bullseye
-RUN apt-get update && apt-get -y install curl git cmake make gcc g++ nasm wget gperf bzip2 meson uuid-dev perl libxml-parser-perl
+FROM debian:latest
+RUN apt-get update && apt-get -y install curl git cmake make gcc g++ nasm wget gperf bzip2 meson uuid-dev perl libxml-parser-perl xz-utils intltool libxml2-dev
 
 RUN bash -c 'cd; curl -LO https://pkg-config.freedesktop.org/releases/pkg-config-0.29.2.tar.gz; tar -xvf pkg-config-0.29.2.tar.gz; cd pkg-config-0.29.2; ./configure --with-internal-glib; make; make install'
 RUN bash -c 'cd; curl -O https://zlib.net/fossils/zlib-1.2.11.tar.gz; tar -xvf zlib-1.2.11.tar.gz; cd zlib-1.2.11; ./configure; make; make install'
@@ -12,7 +12,7 @@ RUN pip3 install meson
 RUN bash -c 'cd; curl -LO https://download.sourceforge.net/giflib/giflib-5.2.1.tar.gz; tar -xvf giflib-5.2.1.tar.gz; cd giflib-5.2.1; ./configure; make; make install'
 RUN bash -c 'cd; curl -LO https://download.sourceforge.net/libpng/libpng-1.6.37.tar.gz; tar -xvf libpng-1.6.37.tar.gz; cd libpng-1.6.37; ./configure; make; make install'
 RUN bash -c 'cd; curl -LO https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.0.6.tar.gz; tar -xvf 2.0.6.tar.gz; cd libjpeg-turbo-2.0.6; mkdir b; cd b; cmake -G"Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr/local ..; make; make install'
-RUN bash -c 'cd; curl -O https://ftp.pcre.org/pub/pcre/pcre-8.44.tar.bz2; tar -xvf pcre-8.44.tar.bz2; cd pcre-8.44; ./configure --enable-pcre16 --enable-pcre32 --enable-utf --enable-unicode-properties; make; make install '
+RUN bash -c 'cd; curl -OL https://sourceforge.net/projects/pcre/files/pcre/8.44/pcre-8.44.tar.bz2; tar -xvf pcre-8.44.tar.bz2; cd pcre-8.44; ./configure --enable-pcre16 --enable-pcre32 --enable-utf --enable-unicode-properties; make; make install '
 RUN ldconfig
 RUN bash -c 'cd; curl -LO https://download.gnome.org/sources/glib/2.67/glib-2.67.1.tar.xz; tar -xvf glib-2.67.1.tar.xz; cd glib-2.67.1; meson _build; cd _build; ninja; ninja install'
 RUN ldconfig
