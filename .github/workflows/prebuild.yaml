@@ -24,7 +24,7 @@ jobs:
   Linux:
     strategy:
       matrix:
-        node: [18]
+        node: [17]
         canvas_tag: ["v2.11.0"] # e.g. "v2.6.1"
     name: ${{ matrix.canvas_tag}}, Node.js ${{ matrix.node }}, Linux
     runs-on: ubuntu-latest
