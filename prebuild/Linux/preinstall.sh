@@ -4,5 +4,5 @@
 git clone git://anongit.gentoo.org/proj/pax-utils.git
 cd pax-utils
 PATH=$PATH:$PWD
-make
+meson build
 cd ..
