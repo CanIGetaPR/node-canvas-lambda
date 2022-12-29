@@ -43,6 +43,7 @@ jobs:
 
       - name: Build
         run: |
+          apt-get install build-tools
           npm install -g node-gyp
           npm install --ignore-scripts
           . prebuild/Linux/preinstall.sh
