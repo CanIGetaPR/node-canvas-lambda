@@ -43,7 +43,6 @@ jobs:
 
       - name: Build
         run: |
-          apt intall build-essential
           npm install -g node-gyp
           npm install --ignore-scripts
           . prebuild/Linux/preinstall.sh
