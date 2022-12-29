@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:bullseye
 RUN apt-get update && apt-get -y install curl git cmake make gcc g++ nasm wget gperf bzip2 meson uuid-dev perl libxml-parser-perl
 
 RUN bash -c 'cd; curl -LO https://pkg-config.freedesktop.org/releases/pkg-config-0.29.2.tar.gz; tar -xvf pkg-config-0.29.2.tar.gz; cd pkg-config-0.29.2; ./configure --with-internal-glib; make; make install'
@@ -28,12 +28,6 @@ RUN bash -c 'cd; curl -LO https://github.com/fribidi/fribidi/releases/download/v
 RUN bash -c 'cd; curl -LO https://download.gnome.org/sources/pango/1.48/pango-1.48.0.tar.xz; tar -xvf pango-1.48.0.tar.xz; cd pango-1.48.0; meson -Dharfbuzz:docs=disabled -Dgtk_doc=false _build; cd _build; ninja; ninja install'
 RUN ldconfig
 
-# librsvg
-RUN bash -c 'curl https://sh.rustup.rs -sSf | sh -s -- -y';
-RUN bash -c 'curl -O http://xmlsoft.org/sources/libxml2-2.9.10.tar.gz; tar -xvf libxml2-2.9.10.tar.gz; cd libxml2-2.9.10; ./configure --without-python; make; make install'
-RUN bash -c 'curl -O https://ftp.gnu.org/pub/gnu/gettext/gettext-0.21.tar.gz; tar -xvf gettext-0.21.tar.gz; cd gettext-0.21; ./configure; make; make install'
-RUN ldconfig
-RUN bash -c 'curl -LO https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz; tar -xvf intltool-0.51.0.tar.gz; cd intltool-0.51.0; ./configure; make; make install'
 # using an old version of shared-mime-info because 2.1 has a ridiculous number of dependencies for what is essentially just a database
 RUN bash -c 'curl -O https://people.freedesktop.org/~hadess/shared-mime-info-1.8.tar.xz; tar -xvf shared-mime-info-1.8.tar.xz; cd shared-mime-info-1.8; ./configure; make; make install'
 RUN bash -c 'curl -LO https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.2.tar.xz; tar -xvf gdk-pixbuf-2.42.2.tar.xz; cd gdk-pixbuf-2.42.2; meson _build; cd _build; ninja install';
