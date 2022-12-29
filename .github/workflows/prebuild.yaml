@@ -43,7 +43,7 @@ jobs:
 
       - name: Build
         run: |
-          npm install -g node-gyp
+          npm install -g node-gyp@8.4.1
           npm install --ignore-scripts
           . prebuild/Linux/preinstall.sh
           cp prebuild/Linux/binding.gyp binding.gyp
