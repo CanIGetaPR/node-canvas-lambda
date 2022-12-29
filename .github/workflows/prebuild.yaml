@@ -37,13 +37,14 @@ jobs:
         with:
           ref: ${{ matrix.canvas_tag }}
 
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3.5.1
         with:
           node-version: ${{ matrix.node }}
 
       - name: Build
         run: |
           npm install -g node-gyp
+          echo installed node-gyp
           npm install --ignore-scripts
           . prebuild/Linux/preinstall.sh
           cp prebuild/Linux/binding.gyp binding.gyp
