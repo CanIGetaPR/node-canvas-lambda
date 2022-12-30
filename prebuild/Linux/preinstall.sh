@@ -1,4 +1,4 @@
 # apt-get-style dependencies aren't done here since the
 # linux build is done on a docker image that has them
 
-apt-get install pax-utils
+apt-get install -y pax-utils
