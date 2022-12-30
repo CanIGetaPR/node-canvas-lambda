@@ -3,7 +3,7 @@
 
 curl -O https://github.com/gentoo/pax-utils/archive/refs/tags/v1.3.5.tar.gz
 tar -xvf v1.3.5.tar.gz 
-cd v1.3.5.tar.gz
+cd v1.3.5
 PATH=$PATH:$PWD
 meson build
 cd ..
